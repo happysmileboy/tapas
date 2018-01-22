@@ -1,0 +1,80 @@
+    1  ddfdfs
+    2  ls
+    3  cddesktop
+    4  cd/desktop
+    5  cddesktop
+    6  cddesktop
+    7  cd Desktop
+    8  ls
+    9  cd~/Python
+   10  mkdir~/Python
+   11  ls
+   12  mkdir test
+   13  git
+   14  git clone https://github.com/posa98/piro.git
+   15  cd test
+   16  cd C:\Users\양지원\test
+   17  cd C:\dev\test
+   18  ls
+   19  cd ..
+   20  cd ..
+   21  ls
+   22  C:\dev\test
+   23  cd C:\dev\test
+   24  ls
+   25  git clone https://github.com/posa98/piro.git
+   26  sudo git clone https://github.com/posa98/piro.git
+   27  ls
+   28  history
+   29  git clone https://github.com/posa98/piro.git
+   30  ls
+   31  cd piro/
+   32  touch abc.txt
+   33  git status
+   34  git add abc.txt
+   35  git commit -m "Add abc.txt"
+   36  git commit -m"Add abc.txt"
+   37  git log
+   38  git configuser.email posa98@naver.com
+   39  git config user.email posa98@naver.com
+   40  git commit -m"Add abc.txt"
+   41  git branch
+   42  git checkout
+   43  git checkout -b bugfix
+   44  touch bugfix.txt
+   45  ls
+   46  history | grep git
+   47  history
+   48  git add bugfix.txt
+   49  git commit -m"Fix bug A"
+   50  git remote -v
+   51  git push origin bugfix
+   52  git push origin bugfix
+   53  git push origin bugfix
+   54  cd ~
+   55  git clone https://github.com/happysmileboy/tapas.git
+   56  cd tapas
+   57  git checkout -b jiwon
+   58  touch jiwon.txt
+   59  git checkout jiwon
+   60  git status
+   61  git add test.txt
+   62  git add jiwon.txt
+   63  git status
+   64  git config core.editor vi
+   65  git commit -m "1"
+   66  git commit
+   67  git congfig --global user.email "posa98@naver.com"
+   68  git config --global user.email "posa98@naver.com"
+   69  git congfig --global user.name "jiwon"
+   70  git config --global user.name "jiwon"
+   71  git config core.editor vi
+   72  git commit
+   73  git remote -v
+   74  git push origin jiwon
+   75  history
+   76  git checkout master
+   77  git pull origin master
+   78  git checkout -b video
+   79  git branch
+   80  history
