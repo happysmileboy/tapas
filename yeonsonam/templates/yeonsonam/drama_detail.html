@@ -1,0 +1,85 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+<div>
+    <!-- 본문 영역 -->
+    <div style="padding: 80px 0 30px 0; margin-bottom: 50px;">
+        <h2 style="text-align: center; color: #565656;">{{ article.title }}</h2>
+        <div style="text-align: right;
+                    margin-top: 30px;
+                    margin-right: 10px;
+                    font-size: 12px;">
+            <span>{{ article.created_at|date:"Y.m.d h:i A" }}</span><br />
+            <a href="{% url 'accounts:profile_detail' 'kaske' %}">Kaske</a>
+        </div>
+    </div>
+    <div style="font-size: 13px; line-height: 18px; color: #565656;">
+        <p>{{ article.content }}</p>
+    </div>
+    <div id="tag_area" style="margin: 20px 0;">
+        {% for tag in article.tag.all %}
+        <div class="chip">{{ tag.name }}</div>
+        {% endfor %}
+    </div>
+    <div id="like_button_wrapper">
+        <form action="{% url 'core:article_like' article.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn {% if did_like_article %}liked{% endif %}">추천 {{ article.liker_set.count }}</button>
+        </form>
+    </div>
+    <!-- 본문 영역 끝 -->
+
+    <a href="{% url 'core:article_list' %}" class="waves-effect waves-light btn">목록으로</a>
+
+    <div style="float: right;">
+        <a href="{% url 'core:article_update' article.pk %}" class="waves-effect waves-light btn">수정</a>
+        <form id="article_delete_form" action="{% url 'core:article_delete' article.pk %}" method="POST" style="display: inline-block;">
+            {% csrf_token %}
+            <button type="submit" class="waves-effect waves-light btn">삭제</button>
+        </form>
+        <script>
+            $('#article_delete_form').submit(function(e) {
+                if (!confirm('지우시겠습니까?')) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+    </div>
+
+    <!-- 댓글 영역 -->
+    <div class="comment_area">
+        <h4>댓글</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="waves-effect waves-light btn">작성</button>
+        </form>
+        {% if article.comment_set.exists %}
+        <ul>
+            {% for comment in article.comment_set.all %}
+            <li style="margin: 30px 0;">
+                <div style="font-size: 17px; font-weight: bold;">
+                    <a href="{% url 'accounts:profile_detail' comment.author.username %}">{{ comment.author }}</a>
+                </div>
+                <div style="margin: 10px 0;">
+                    <span>{{ comment.content }}</span>
+                    <span>{{ comment.created_at|date:"Y.m.d h:i A"}}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <!-- 댓글 영역 끝 -->
+</div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
