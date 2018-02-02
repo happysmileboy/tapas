@@ -1,24 +1,31 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
-    phone_number = models.IntegerField(blank=True, null=True)
-    birthday = models.IntegerField(blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'auth_user'
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    image = models.ImageField(
+        upload_to='profile/%Y/%m/%d/',
+        blank=True,
+        null=True,
+    )
+    birth_day = models.DateField(blank=True, null=True)
+    description = models.TextField(blank=True)
+    phone_number = models.IntegerField(blank=True)
+
+    def image_url(self):
+        if self.image:
+            image_url = self.image.url
+        else:
+            image_url = '/static/img/default_profile_image.jpg'
+        return image_url
 
 
     def __str__(self):
-        return self.username
+        return self.user
