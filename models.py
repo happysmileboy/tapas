@@ -32,6 +32,19 @@ class AccountEmailconfirmation(models.Model):
         db_table = 'account_emailconfirmation'
 
 
+class AccountsProfile(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    image = models.CharField(max_length=100, blank=True, null=True)
+    birth_day = models.DateField(blank=True, null=True)
+    description = models.TextField()
+    phone_number = models.IntegerField()
+    user = models.ForeignKey('AuthUser', models.DO_NOTHING, unique=True)
+
+    class Meta:
+        managed = False
+        db_table = 'accounts_profile'
+
+
 class AuthGroup(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     name = models.CharField(unique=True, max_length=80)
@@ -161,6 +174,36 @@ class DjangoSite(models.Model):
         db_table = 'django_site'
 
 
+class Drama22(models.Model):
+    field1 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field2 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field3 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field4 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field5 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field6 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field7 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field8 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    field9 = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'drama22'
+
+
+class Kopis1(models.Model):
+    field1 = models.TextField(blank=True, null=True)
+    field2 = models.TextField(blank=True, null=True)
+    field3 = models.TextField(blank=True, null=True)
+    field4 = models.TextField(blank=True, null=True)
+    field5 = models.TextField(blank=True, null=True)
+    field6 = models.TextField(blank=True, null=True)
+    id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'kopis1'
+
+
 class SocialaccountSocialaccount(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     provider = models.CharField(max_length=30)
@@ -214,142 +257,64 @@ class SocialaccountSocialtoken(models.Model):
         unique_together = (('app', 'account'),)
 
 
-class YeonsonamActor(models.Model):
+class YeonsonamComment(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
-    name = models.CharField(max_length=10)
-    actor_photo = models.CharField(max_length=100, blank=True, null=True)
+    content = models.CharField(max_length=100)
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
+    author = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    drama = models.ForeignKey('YeonsonamDrama', models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'yeonsonam_actor'
-
-
-class YeonsonamDiscount(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    name_of_discount = models.CharField(max_length=20)
-    discounted_price = models.IntegerField()
-    rate_of_discount = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_discount'
+        db_table = 'yeonsonam_comment'
 
 
 class YeonsonamDrama(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
-    place = models.ForeignKey('YeonsonamPlace', models.DO_NOTHING)
-    open_date = models.DateField(db_column='open_Date')  # Field name made lowercase.
-    end_date = models.DateField(db_column='end_Date')  # Field name made lowercase.
-    content = models.TextField()
-    seat_photo = models.ForeignKey('YeonsonamSeatPhoto', models.DO_NOTHING)
     title = models.CharField(max_length=30)
-    running_time = models.IntegerField()
+    open_date = models.DateField(db_column='open_Date', blank=True, null=True)  # Field name made lowercase.
+    end_date = models.DateField(db_column='end_Date', blank=True, null=True)  # Field name made lowercase.
+    content = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
+    place = models.CharField(max_length=150, blank=True, null=True)
+    actor = models.CharField(db_column='Actor', max_length=150, blank=True, null=True)  # Field name made lowercase.
+    genre = models.CharField(max_length=150, blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    running_time = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'yeonsonam_drama'
 
 
-class YeonsonamDramaActor(models.Model):
+class YeonsonamDramaLikerSet(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     drama = models.ForeignKey(YeonsonamDrama, models.DO_NOTHING)
-    actor = models.ForeignKey(YeonsonamActor, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'yeonsonam_drama_Actor'
-        unique_together = (('drama', 'actor'),)
+        db_table = 'yeonsonam_drama_liker_set'
+        unique_together = (('drama', 'user'),)
 
 
-class YeonsonamDramaGenre(models.Model):
+class YeonsonamDramaTag(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     drama = models.ForeignKey(YeonsonamDrama, models.DO_NOTHING)
-    genre = models.ForeignKey('YeonsonamGenre', models.DO_NOTHING)
+    tag = models.ForeignKey('YeonsonamTag', models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'yeonsonam_drama_genre'
-        unique_together = (('drama', 'genre'),)
+        db_table = 'yeonsonam_drama_tag'
+        unique_together = (('drama', 'tag'),)
 
 
-class YeonsonamDramaPrice(models.Model):
+class YeonsonamTag(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
-    drama = models.ForeignKey(YeonsonamDrama, models.DO_NOTHING)
-    price = models.ForeignKey('YeonsonamPrice', models.DO_NOTHING)
+    name = models.CharField(max_length=10)
 
     class Meta:
         managed = False
-        db_table = 'yeonsonam_drama_price'
-        unique_together = (('drama', 'price'),)
-
-
-class YeonsonamDramaSequence(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    drama = models.ForeignKey(YeonsonamDrama, models.DO_NOTHING)
-    sequence = models.ForeignKey('YeonsonamSequence', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_drama_sequence'
-        unique_together = (('drama', 'sequence'),)
-
-
-class YeonsonamGenre(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    kind_of_genre = models.CharField(max_length=10)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_genre'
-
-
-class YeonsonamPlace(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    place = models.CharField(max_length=20)
-    parent = models.ForeignKey('self', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_place'
-
-
-class YeonsonamPrice(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    price = models.IntegerField()
-    discount = models.ForeignKey(YeonsonamDiscount, models.DO_NOTHING)
-    site = models.ForeignKey('YeonsonamSiteReservation', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_price'
-
-
-class YeonsonamSeatPhoto(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    main_seat_photo = models.CharField(max_length=100)
-    sub_seat_photo = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_seat_photo'
-
-
-class YeonsonamSequence(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    sequence_num = models.CharField(max_length=10)
-    sequence_time = models.TimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_sequence'
-
-
-class YeonsonamSiteReservation(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    site_name = models.CharField(max_length=20)
-    site_url = models.CharField(max_length=200)
-    site_location = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_site_reservation'
+        db_table = 'yeonsonam_tag'
