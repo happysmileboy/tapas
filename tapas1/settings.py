@@ -79,7 +79,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
         os.path.join(BASE_DIR, 'tapas1', 'templates'),
-        os.path.join(BASE_DIR, 'accounts', 'templates', 'allauth', 'account')],
+        os.path.join(BASE_DIR, 'accounts', 'templates', 'allauth', 'account', )],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,10 +142,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL ='/static/'
-STATIC_ROOT ='static'
+STATIC_ROOT ='statics'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR),
+    os.path.join(BASE_DIR), 'static'
 ]
