@@ -77,7 +77,9 @@ ROOT_URLCONF = 'tapas1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        os.path.join(BASE_DIR, 'tapas1', 'templates'),
+        os.path.join(BASE_DIR, 'accounts', 'templates', 'allauth', 'account')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,4 +143,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL ='/static/'
 STATIC_ROOT ='static'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR),
+]
