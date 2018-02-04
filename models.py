@@ -8,6 +8,24 @@
 from django.db import models
 
 
+class Drama2(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    place = models.CharField(max_length=150, blank=True, null=True)
+    genre = models.CharField(max_length=150, blank=True, null=True)
+    key = models.CharField(max_length=150, blank=True, null=True)
+    openrun = models.CharField(max_length=150, blank=True, null=True)
+    title = models.CharField(max_length=150, blank=True, null=True)
+    start = models.CharField(max_length=150, blank=True, null=True)
+    end = models.CharField(max_length=150, blank=True, null=True)
+    state = models.CharField(max_length=150, blank=True, null=True)
+    detail_url = models.CharField(max_length=300, blank=True, null=True)
+    poster = models.CharField(max_length=300, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Drama2'
+
+
 class AccountEmailaddress(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     verified = models.BooleanField()
@@ -172,36 +190,6 @@ class DjangoSite(models.Model):
     class Meta:
         managed = False
         db_table = 'django_site'
-
-
-class Drama22(models.Model):
-    field1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field5 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field6 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field7 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field8 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field9 = models.TextField(blank=True, null=True)  # This field type is a guess.
-
-    class Meta:
-        managed = False
-        db_table = 'drama22'
-
-
-class Kopis1(models.Model):
-    field1 = models.TextField(blank=True, null=True)
-    field2 = models.TextField(blank=True, null=True)
-    field3 = models.TextField(blank=True, null=True)
-    field4 = models.TextField(blank=True, null=True)
-    field5 = models.TextField(blank=True, null=True)
-    field6 = models.TextField(blank=True, null=True)
-    id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'kopis1'
 
 
 class SocialaccountSocialaccount(models.Model):

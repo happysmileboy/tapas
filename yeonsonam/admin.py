@@ -3,6 +3,9 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-admin.site.register(Drama)
-admin.site.register(Kopis1)
-admin.site.register(Drama22)
+
+
+@admin.register(Drama2)
+class Drama2Admin(admin.ModelAdmin):
+    list_display = ('title', 'start', 'end', 'state')
+    ordering = ['start']

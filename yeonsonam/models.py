@@ -9,17 +9,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-class Kopis1(models.Model):
-    field1 = models.CharField(max_length=150,blank=True, null=True)
-    field2 = models.CharField(max_length=150,blank=True, null=True)
-    field3 = models.CharField(max_length=150,blank=True, null=True)
-    field4 = models.CharField(max_length=150,blank=True, null=True)
-    field5 = models.CharField(max_length=150,blank=True, null=True)
-    field6 = models.CharField(max_length=150,blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'kopis1'
 
 class Drama(models.Model):
     title = models.CharField(max_length=30, verbose_name='제목')
@@ -61,29 +50,33 @@ class Comment(models.Model):
             'pk': self.pk,
         })
 
-class Drama22(models.Model):
-    field1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field5 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field6 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field7 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field8 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    field9 = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+class Drama2(models.Model):
+    place = models.CharField(max_length=150, blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'. This field type is a guess.
+    genre = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    key = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    openrun = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    poster = models.CharField(max_length=300,blank=True, null=True)  # This field type is a guess.
+    title = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    start = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    end = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    state = models.CharField(max_length=150,blank=True, null=True)  # This field type is a guess.
+    detail_url = models.CharField(max_length=300,blank=True, null=True) 
+    place_id = models.CharField(max_length=300,blank=True, null=True) 
+    cast = models.CharField(max_length=300,blank=True, null=True) 
+    crew = models.CharField(max_length=300,blank=True, null=True) 
+    runtime = models.CharField(max_length=300,blank=True, null=True) 
+    age = models.CharField(max_length=300,blank=True, null=True) 
+    enterprise = models.CharField(max_length=300,blank=True, null=True) 
+    price = models.CharField(max_length=300,blank=True, null=True) 
+    summary = models.TextField(blank=True, null=True) 
+    styurl = models.TextField(blank=True, null=True) 
+    time = models.CharField(max_length=300,blank=True, null=True) 
+
 
     class Meta:
-        managed = False
-        db_table = 'drama22'
-
-    def __str__(self):
-        return self.field2
-
-
-
-
-
-
+        managed = True
+        db_table = 'Drama2'
 
 
 
