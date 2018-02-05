@@ -11,7 +11,24 @@
 <div style="margin-top: 100;"></div>
 <div class="row">
 
-    <div class="col l12"><div style="margin-left: 30%;"><img src="{{drama.poster}}"></div><div ></div></div>
+    <div class=""><div style="margin-left: 30%;"><img src="{{drama.poster}}" width="300" height="425"><div style=" margin-left:20%; margin-top: -20%; margin-bottom: 20%; margin-right: 45%;">
+
+    <p>| 제목</p>
+    {{drama.title}}
+
+    <p>| 줄거리</p>
+
+    {% if len > 10 %}
+
+    {{drama.summary}}
+
+    {% else %}
+
+    인간의 형상을 한 혼혈 천사와 혼혈 악마가 존재하는 세상. 태어날 때부터 그들을 구분하는 능력을 타고난 존 콘스탄틴(키아누 리브스)은 자신의 능력을 저주하며 운명에서 벗어나기 위해 자살을 시도하지만 실패하고 만다. 그 후 다시 살아난 그는 천국과 지옥의 경계를 넘나들며 세상에 존재하는 악을 지옥으로 돌려보내기에 나선다. 그래야만 지옥으로 가게 되어 있는 자신의 운명이 뒤바뀌어 천국으로 들어갈 수 있음을 깨달았기 때문이다. 술, 담배에 쩔어 살면서 계속되는 전투에 지쳐만 가던 콘스탄틴. 그런 그에게 어느 날, L.A 강력계 소속의 여형사 안젤라(레이첼 와이즈)가 찾아와 쌍둥이 동생의 죽음에 대한 의문을 풀기 위해 도움을 요청한다. 그러나 사건을 파헤칠수록 거대한 어둠의 힘 속으로 빨려 들게 되는데...</div>
+
+    {% endif %}
+
+</div></div>
   </div>
 
 

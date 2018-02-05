@@ -42,7 +42,8 @@ def drama_detail(request, pk):
         'drama': drama,
         'comment_form': comment_form,
         'did_like_article': drama.liker_set.filter(pk=request.user.pk),
-        'urls':urls
+        'urls':urls,
+        'len':len(drama.summary)
     }
     if request.method == "POST" and comment_form.is_valid():
         new_comment = comment_form.save(commit=False)
