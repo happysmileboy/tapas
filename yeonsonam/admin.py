@@ -7,5 +7,5 @@ from .models import *
 
 @admin.register(Drama2)
 class Drama2Admin(admin.ModelAdmin):
-    list_display = ('title', 'start', 'end', 'state')
+    list_display = ('title', 'start', 'end', 'state', 'pk')
     ordering = ['start']
