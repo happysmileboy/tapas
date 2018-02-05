@@ -20,10 +20,6 @@ class Drama(models.Model):
     content = models.TextField(blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     Actor = models.CharField(max_length=150,blank=True, null=True)
-    liker_set = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        related_name='liked_drama_set',
-    )
     tag = models.ManyToManyField(Tag, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -72,7 +68,10 @@ class Drama2(models.Model):
     summary = models.TextField(blank=True, null=True) 
     styurl = models.TextField(blank=True, null=True) 
     time = models.CharField(max_length=300,blank=True, null=True) 
-
+    liker_set = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='liked_drama_set',
+    )
 
     class Meta:
         managed = True

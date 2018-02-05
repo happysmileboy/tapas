@@ -13,27 +13,28 @@ from .forms import *
 
 def drama_list(request, tag_pk=None):
     if tag_pk is not None:
-        drama_list = Drama.objects.filter(tag__pk=tag_pk)
+        drama_list = Drama2.objects.filter(tag__pk=tag_pk)
         # get_object_or_404 사용하는게 좋음.
         try:
             tag = Tag.objects.get(pk=tag_pk)
         except Tag.DoesNotExist:
             raise Http404('없는 Tag입니다.')
     else:
-        drama_list = Drama.objects.all()
+        drama_list = Drama2.objects.all()
         tag = None
 
     ctx = {
         'drama_list': drama_list,
         'tag_list': Tag.objects.all(),
         'tag_selected': tag,
+        'list1':list1,
     }
     return render(request, 'yeonsonam/drama_list.html', ctx)
 
 
-@login_required
+
 def drama_detail(request, pk):
-    drama = get_object_or_404(Drama, pk=pk)
+    drama = get_object_or_404(Drama2, pk=pk)
     comment_form = CommentForm(request.POST or None)
     ctx = {
         'drama': drama,
@@ -42,10 +43,10 @@ def drama_detail(request, pk):
     }
     if request.method == "POST" and comment_form.is_valid():
         new_comment = comment_form.save(commit=False)
-        new_comment.article = article
+        new_comment.drama = drama
         new_comment.author = request.user
         new_comment.save()
-        return redirect(article.get_absolute_url())
+        return redirect(drama.get_absolute_url())
 
     return render(request, 'yeonsonam/drama_detail.html', ctx)
 

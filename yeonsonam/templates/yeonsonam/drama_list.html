@@ -115,6 +115,21 @@
 
 	<!-- custom controls -->
 
+{% for drama in drama_list %}
+
+<div style="margin-left: 40%;">
+	<p>{{drama.title}}</p>
+	<a href="/yeonsonam/{{drama.id}}"><p><img src="{{drama.poster}}" width="250"></p></a>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+
 
   </body>
 </html>
