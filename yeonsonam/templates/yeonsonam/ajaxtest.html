@@ -1,0 +1,23 @@
+<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+ $(document).on("click", "#id_a", function() {
+  var c_data = {};
+  c_data['click'] = 'a';
+  $.ajax({
+   url : ".",
+   dataType:"json",
+   data: c_data
+  }).done(function(msg) {
+   $("#text_area").append("done : "+msg['message']+"<br />");
+  });
+ });
+</script>
+
+<button id="id_a">
+ a
+</button>
+
+<div id="text_area">
+ Text Area
+
+</div>

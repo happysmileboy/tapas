@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title></title>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+   <script src="{% static 'js/base.js' %}"></script>
+
+   <link href="{% static "css/accounts.css" %}?ver=1.1" rel="stylesheet">
+
+   <link href="{%static "css/base.css" %}" rel="stylesheet">
+
+
+
+</head>
+<body>
+   <!--navbar-->
+    <div id="navigation">
+      <div id="nav_group">
+      <a href="{% url 'yeonsonam:drama_list' %}" class="nav_logo" >연소남</a>
+      {% if request.user.is_authenticated %}
+      <div class="right nav_dropdown">
+        {% if request.user.profile.image %}
+        <img src="{{ request.user.profile.image.url }}" class="profile_photo">
+        {% else %}
+          <img src="{% static "accounts/no_profile_photo.png" %}" class="profile_photo">
+        {% endif %}
+        <div class="dropdown">
+
+          <a href="{% url "accounts:profile_detail" %}" class="dropbtn nav_a">{{ request.user.profile.nickname }}</a>
+          <div class="dropdown-content">
+            <a href="{% url 'account_logout' %}">로그아웃</a>
+            <a href="{% url 'accounts:profile_detail' %}">프로필</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+      </div>
+
+        {% else %}
+        <div class="nav_div right">
+          <a href="{% url "accounts:account_login" %}" class="nav_a right">로그인</a>
+          <a href="{% url "accounts:account_signup" %}" class="nav_a right">회원가입</a>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+
+
+   <!--section1-->
+
+   <div id='section1'>
+      {% block content %}{% endblock %}
+   </div>
+
+
+   <!--footer-->
+
+   <footer>
+    <br>
+      <div class="footer_in">
+        <ul><strong>
+          <a href="#">팀소개 </a>
+          <a href="#" id="footer_a">문의사항</a>
+          <a href="#"> 페이스북</a>
+        </strong>
+        </ul>
+        <small>
+          <p><strong>만든이</strong> : 손준혁 안성빈 강민경 양지원</p>
+        </small>
+      </div>
+    <p>test</p>
+    <br>
+
+
+                © 2018 Yeonsonam, SNU Business Venture and Entrepreneurship
+
+   </footer>
+
+
+
+
+</body>
+</html>
