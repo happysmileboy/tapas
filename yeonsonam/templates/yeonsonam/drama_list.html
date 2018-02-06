@@ -1,0 +1,20 @@
+{% extends "base2.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+
+{% for drama in drama_list %}
+
+{{drama.title}}
+
+{% endfor %}
+
+
+
+{% endblock %}
