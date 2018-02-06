@@ -20,7 +20,7 @@ def drama_list(request, tag_pk=None):
         except Tag.DoesNotExist:
             raise Http404('없는 Tag입니다.')
     else:
-        drama_list = Drama.objects.all()
+        drama_list = Drama2.objects.all()
         tag = None
 
     ctx = {

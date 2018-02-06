@@ -7,115 +7,14 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<?xml version="1.0"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="commonPage" lang="en-GB" xml:lang="en-GB">
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title></title>
-
-	<!-- Include jQuery -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-	<!-- Include Theatre files - I recommend extracting all the Theatre files into "theatre" folder for easier upgrades in the future -->
-	<link type="text/css" rel="stylesheet" href="{% static "theatre/theatre.css" %}"/>
-	<script type="text/javascript" src="{% static "theatre/jquery.theatre.min.js" %}"></script>
-
-	<!-- Some styling for this page -->
-	<link rel="stylesheet" href="{% static "theatre/demo/demo.css" %}"/>
-
-	<!-- This is how you initialize theatre -->
-	<script type="text/javascript">
-	  $(window).load(function() { // Run when everything is loaded (especially images)
-		 $('#myExample').theatre({ //Initialize theatre
-			// For comlete list of possible settings visit http://www.webdevelopers.eu/shop/5/doc/index#wdx_Settings
-			'effect': '3d', // css3:stack effect and fall over to 3d effect for older browsers
-			'selector': 'img', // for galleries we want to animage only images without the surrounding links
-			'paging': '.paging' // generate paging using element with class 'paging' as the template
-		 });
-	  });
-	</script>
-
-	<!-- Design for nicer paging -->
-	<style type="text/css">
-	  .paging {
-		text-align: center;
-	  }
-	  .paging span {
-		text-decoration: none;
-		color: silver;
-		cursor: pointer;
-	  }
-	  .paging span.active {
-		font-size: 2em;
-		color: black;
-	  }
-
-	  .paging2 span {
-		font-size: 2em;
-	  }
-	</style>
-  </head>
-
-  <body>
-	<h1></h1>
-
-	  <!-- This script changes the effect based on SELECT box state - you don't need it for your page -->
-	  <script type="text/javascript">
-		$('#effect').on('change', function() {
-		   $('#myExample').theatre({
-			  'effect': $('#effect').val(),
-			  'selector': 'img',
-			  'controls': true,
-			  'paging': '.paging'
-		   });
-		});
-	  </script>
-	</form>
-	<br/>
-
-	<!-- optional paging -->
-
-	<!-- gallery -->
-	<div id="myExample" style="width: 632px; margin: auto; visibility: hidden /* trick to hide loading images before Theatre kicks in */;">
-	  <a href="1.jpg" target="_blank">
-		<img src="{% static "theatre/demo/1.jpg" %}" >
-	  </a>
-	  <a href="2.jpg" target="_blank">
-		<img src="{% static "theatre/demo/2.jpg" %}">
-	  </a>
-	  <a href="3.jpg" target="_blank">
-		<img src="{% static "theatre/demo/3.jpg" %}">
-	  </a>
-	  <a href="4.jpg" target="_blank">
-		<img src="{% static "theatre/demo/4.jpg" %}">
-	  </a>
-	  <a href="5.jpg" target="_blank">
-		<img src="{% static "theatre/demo/5.jpg" %}">
-	  </a>
-	  <a href="6.jpg" target="_blank">
-		<img src="{% static "theatre/demo/6.jpg" %}">
-	  </a>
-	  <a href="7.jpg" target="_blank">
-		<img src="{% static "theatre/demo/7.jpg" %}">
-	  </a>
-	  <a href="8.jpg" target="_blank">
-		<img src="{% static "theatre/demo/8.jpg" %}">
-	  </a>
-	  <a href="9.jpg" target="_blank">
-		<img src="{% static "theatre/demo/9.jpg" %}">
-	  </a>
-	  <a href="10.jpg" target="_blank">
-		<img src="{% static "theatre/demo/10.jpg" %}">
-	  </a>
-	</div>
-
-	<!-- yet other optional pagging -->
-	<div class="paging paging2"><span>•</span></div>
-
-	<!-- custom controls -->
 
 
-  </body>
-</html>
+{% for drama in drama_list %}
+
+{{drama.title}}
+
+{% endfor %}
+
+
+
 {% endblock %}
