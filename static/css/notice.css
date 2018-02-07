@@ -20,12 +20,19 @@
 }
 .number{
    flex: 3;
+   color:#282c30;
 }
 .title_container{
    flex: 18;
+
+}
+.title_container a{
+   text-decoration: none;
+   color:#282c30;
 }
 .date_container{
    flex: 5;
+   color:#282c30;
 }
 .pagination {
    display: flex;
