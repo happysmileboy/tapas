@@ -1,0 +1,22 @@
+(function($) {
+	var fx=function($stage, $actors, settings, theatre) {
+		this.capable=function() { // return true or failover effect name
+			return true;
+		};
+		this.init=function() {
+		};
+		this.next=function(prevPos) {
+			// var targetPos=theatre.index;
+		};
+		this.prev=function(prevPos) {
+			// var targetPos=theatre.index;
+		};
+		this.jump=function(prevPos) {
+			// var targetPos=theatre.index;
+		};
+		this.destroy=function() {
+		};
+	};
+
+	$.fn.theatre('effect', EFFECT_NAME, fx);
+})(jQuery);

@@ -1,0 +1,22 @@
+.tag_list_box{
+   margin-top:70px;
+   margin-bottom: 50px;
+}
+
+
+
+.list_box{
+   width: 900px;
+   margin:auto;
+}
+
+.drama_card{
+   display: inline-block;
+}
+
+.list_box img{
+   width:220px;
+   height:314px;
+   display: inline-block;
+}
+

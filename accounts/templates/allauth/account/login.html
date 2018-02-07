@@ -1,0 +1,53 @@
+
+{% extends "base2.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block style_css %}
+  <link href="{% static "css/accounts.css" %}?ver=1.13" rel="stylesheet">
+{% endblock %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="login_box">
+<h1 style= "text-align: center;">{% trans "타파스" %}</h1>
+
+  <!--로그인-->
+  <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <button class="primaryAction btn btn-block" type="submit">{% trans "로그인" %}</button>
+  </form>
+  {% get_providers as socialaccount_providers %}
+
+  {% if socialaccount_providers %}
+  <p>{% blocktrans with site.name as site_name %}<a href="{{ signup_url }}">회원가입</a>
+  {% endblocktrans %}</p>
+  <!--소셜로그인-->
+  <img src="{% static "accounts/social_login_btn.png" %}" class="social_login" usemap="#social_login">
+  <map name="social_login">
+    <area shape="rect" coords="0,-1,400,57" alt="" href="/accounts/facebook/login/?process=login">
+    <area shape ="rect" coords="0,68,400,126" alt="" href="#">
+    <area shape="rect" coords="0,137,400,195" alt="Mercury" href="/accounts/naver/login/?process=login">
+    <area shape="rect" coords="0,206,400,264" alt="Venus" href="/accounts/kakao/login/?process=login">
+  </map>
+  {% include "socialaccount/snippets/login_extra.html" %}
+
+  {% else %}
+  <p>{% blocktrans %}If you have not created an account yet, then please
+  <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  {% endif %}
+
+</div>
+
+
+
+{% endblock %}
