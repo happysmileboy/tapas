@@ -1,0 +1,68 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block style_css %}
+  <link href="{% static "css/accounts.css" %}?ver=1.13" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+button{
+  background:#ffffcc;
+  font-color: black;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
+
+<div class="profile" style="margin-left:10%;">
+   <h3>{{user}}</h3>
+  <img class="responsive-img profile_image" src="{{ profile.image_url }}">
+  <p>닉네임 : {{ request.user.profile.nickname|default:"미입력" }}</p>
+  <p>생일 : {{ request.user.profile.birth_day|date:"Y.m.d."|default:"미입력" }}</p>
+  <p>이메일 : {{ request.user.profile.email_address|default:"미입력" }}</p>
+  <p>성별 : {{ request.user.profile.gender|default:"미입력" }}</p>
+  <p>휴대폰번호 : {{ request.user.profile.phone_number|default:"미입력" }}</p>
+  <p>집주소 : {{ request.user.profile.home_address|default:"미입력" }}</p>
+  <p>자기소개 : {{ request.user.profile.description|default:"미입력" }}</p>
+  <p>가입날짜 : {{ request.user.profile.created_at|date:"Y.m.d h:i A"|default:"미입력" }}</p>
+
+</br>
+</br>
+</br>
+<button><a href="{% url 'accounts:profile_update' %}">프로필 수정</a></button>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends "base2.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block style_css %}
+<link href="{%static "css/yeonsonam.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="tag_list_box">
+</div>
+
+<div class="list_box">
+   {% for drama_list in drama_list %}
+   <div class="drama_card">
+      <a href="{% url "yeonsonam:drama_detail" drama_list.pk %}">
+      <img src="{{ drama_list.poster }}"></a>
+   </div>
+   {% endfor%}
+</div>
+
+
+
+
+{% endblock %}
