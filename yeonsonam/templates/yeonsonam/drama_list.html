@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block js_static %}
+<script src="{% static 'js/yeonsonam.js' %}?ver=1.05"></script>
+{%endblock%}
+{% block style_css %}
+<link href="{%static "css/yeonsonam.css" %}?ver=1.05" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="tag_list_box">
+</div>
+
+<div class="list_box">
+   {% for drama_list in drama_list %}
+   <div class="drama_card" >
+      <a href="{% url 'yeonsonam:drama_detail' drama_list.pk %}" onclick="myfunction('{% url 'yeonsonam:drama_detail' drama_list.pk %}')" class="drama_detail_view">
+         <img src="{{ drama_list.poster }}">
+      </a>
+   </div>
+   {% endfor%}
+</div>
+
+<div class="gsc-results-wrapper-overlay">
+   <div class="gsc-results-close-btn" tabindex="0">
+   </div>
+   <div class="detail">
+      TETS입니다
+   </div>
+</div>
+<div class="gsc-modal-background-image">
+</div>
+
+
+
+{% endblock %}
