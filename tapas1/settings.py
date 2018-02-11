@@ -132,6 +132,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_REDIRECT_URL = 'yeonsonam:drama_list'
 LOGOUT_REDIRECT_URL = 'accounts:account_login'
+SIGNUP_REDIRECT_URL = 'accounts:account_login'
 
 
 # Internationalization
@@ -161,7 +162,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 't35114105@gmail.com'
+EMAIL_HOST_PASSWORD = 'planttree'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+
