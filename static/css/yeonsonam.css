@@ -56,20 +56,7 @@
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=7, Direction=135, Color='#888888');
 }
 
-.gsc-results-close-btn {
-    background-image: url(//www.google.com/images/nav_logo114.png);
-    background-repeat: no-repeat;
-    background-position: -140px -230px;
-    float: right;
-    display: none;
-    opacity: 0;
-    height: 12px;
-    width: 12px;
-    position: absolute !important;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-}
+
 
 .gsc-modal-background-image{
    position: fixed !important;

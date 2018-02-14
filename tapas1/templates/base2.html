@@ -8,12 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!--myjavscript-->
-    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/base.js' %}?ver=1.02"></script>
     {% block js_static %}{% endblock %}
 
     <!--mycss-->
     {% block style_css %}{% endblock %}
-    <link href="{%static "css/base.css" %}?ver=1.00" rel="stylesheet">
+    <link href="{%static "css/base.css" %}?ver=1.09" rel="stylesheet">
 
 
       <!--Import Google Icon Font-->
@@ -22,50 +22,107 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
+<body>
+  <header>
+    <!--Desktop
+    <nav class="nav_desktop">
 
-   <!--navbar-->
-    <div id="navigation">
-      <div id="nav_group">
-      <a href="{% url 'yeonsonam:drama_list' %}" class="nav_logo" >연소남</a>
+      <div id="navigation">
+        <div id="nav_group">
+        <a href="{% url 'yeonsonam:drama_list' %}" class="nav_logo" >연소남</a>
 
 
-      {% if request.user.is_authenticated %}
-      <div class="right nav_dropdown">
-        <ul class="nav-ul">
-            <a href="{% url 'etc:notice_list' %}" class="nav_a">공지사항</a>
-            <a href="#" class="nav_a">이벤트</a>
-        <div class="dropdown">
-        {% if request.user.profile.image %}
-        <img src="{{ request.user.profile.image.url }}" class="profile_photo">
-        {% else %}
-          <img src="{% static "accounts/no_profile_photo.png" %}" class="profile_photo">
-        {% endif %}
+        {% if request.user.is_authenticated %}
+        <div class="right nav_dropdown">
+          <ul class="nav-ul">
+              <a href="{% url 'etc:notice_list' %}" class="nav_a">공지사항</a>
+              <a href="#" class="nav_a">이벤트</a>
+          <div class="dropdown">
+          {% if request.user.profile.image %}
+          <img src="{{ request.user.profile.image.url }}" class="profile_photo">
+          {% else %}
+            <img src="{% static "accounts/no_profile_photo.png" %}" class="profile_photo">
+          {% endif %}
 
-          <a href="{% url "accounts:profile_detail" %}" class="nav_a right">{{ request.user.profile.nickname }}</a>
-            <div class="dropdown-content">
-              <a href="#">내공연상자</a>
-                <a href="#">고객센터</a>
-                <a href="{% url 'accounts:profile_detail' %}">프로필관리</a>
-                <a href="{% url 'account_logout' %}">로그아웃</a>
+            <a href="{% url "accounts:profile_detail" %}" class="nav_a right">{{ request.user.profile.nickname }}</a>
+              <div class="dropdown-content">
+                <a href="#">내공연상자</a>
+                  <a href="#">고객센터</a>
+                  <a href="{% url 'accounts:profile_detail' %}">프로필관리</a>
+                  <a href="{% url 'account_logout' %}">로그아웃</a>
+                </div>
               </div>
+          </div>
+            </ul>
             </div>
-        </div>
-          </ul>
           </div>
         </div>
-      </div>
 
-        {% else %}
-        <div class="nav_div right">
-          <a href="{% url "accounts:account_login" %}" class="nav_a right">로그인</a>
-          <a href="{% url "accounts:account_signup" %}" class="nav_a right">회원가입</a>
+          {% else %}
+          <div class="nav_div right">
+            <a href="{% url "accounts:account_login" %}" class="nav_a right">로그인</a>
+            <a href="{% url "accounts:account_signup" %}" class="nav_a right">회원가입</a>
+          </div>
+          {% endif %}
+
         </div>
-        {% endif %}
-
       </div>
-    </div>
+    </nav>
+    -->
+    <!--mobile-->
+      <nav class="nav_mobile">
+        <div id="nav_mobile_menu"></div>
+        <div class="nav_mobile_menu_content">
+          <div class="close_box">
+            <img src="{% static 'yeonsonam/x_box.png'%}" class="close_btn">
+          </div>
+        </div>
+          <div class="menu_wrap">
+            <div class="menu">
+              <div class="top"></div>
+              <div class="scroll"></div>
+            </div>
+          </div>
+        <h1 id="logo">
+          <a href="#"><img src="{%static "base_html/logo_img.png"%}" class="logo_img"></a>
+        </h1>
+        <a href="#" class="search_box">
+            <img src="{% static 'base_html/search_butten.png' %}" class="search_butten">
+        </a>
 
+      <!--search-->
+      <div class="search_bar">
+        <div class="wrap_input">
+          <input type="text" placeholder="태그를 입력해주세요">
+        </div>
+        <button class="search_close_btn">취소</button>
+      </div>
+      <div class="recommend_list">
+        <div class="tag_box">
 
+        </div>
+        <strong>태그 사용방법</strong>
+        <ul>
+          <li>
+            <a href="#">장소태그 : p, (p강남, p대학로)</a>
+          </li>
+          <li>
+            <a href="#">배우태그 : a (a이순재, a진선규)</a>
+          </li>
+          <li>
+            <a href="#">감정태그 : e (e즐거운, e재미) </a>
+          </li>
+          <li>
+            <a href="#">해시태그: # (#첫연극, #첫데이트)</a>
+          </li>
+          <li>
+            <a href="#">공연명 : t (t옥탑방고양이, t운빨로맨스)</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
 
    <!--section1-->
 
@@ -101,5 +158,5 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-
+</body>
 </html>

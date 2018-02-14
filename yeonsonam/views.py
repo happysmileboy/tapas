@@ -33,6 +33,26 @@ def drama_list(request, tag_pk=None):
     }
     return render(request, 'yeonsonam/drama_list.html', ctx)
 
+def drama_list_test(request, tag_pk=None):
+    if tag_pk is not None:
+        drama_list = Drama2.objects.filter(tag__pk=tag_pk)
+        # get_object_or_404 사용하는게 좋음.
+        try:
+            tag = Tag.objects.get(pk=tag_pk)
+        except Tag.DoesNotExist:
+            raise Http404('없는 Tag입니다.')
+    else:
+        drama_list = Drama2.objects.all()
+        tag = None
+
+    ctx = {
+        'drama_list': drama_list,
+        'tag_list': Tag.objects.all(),
+        'tag_selected': tag,
+    }
+    return render(request, 'yeonsonam/drama_list_test.html', ctx)
+
+
 
 
 def drama_detail(request, pk):
