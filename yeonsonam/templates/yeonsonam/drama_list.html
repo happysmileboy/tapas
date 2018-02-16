@@ -15,6 +15,16 @@
 
 
 {% block content %}
+<div class="form-group">
+    <label>Tags</label>
+    <div class="controls">
+        {{ form.tags }}
+    </div>
+</div>
+
+<script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+{{ form.media }}
+Colored by Color Scripter
 
 <div class="tag_list_box">
 </div>

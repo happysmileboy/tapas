@@ -5,21 +5,25 @@
   <title>Tapas</title>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <!--myjavscript-->
-    <script src="{% static 'js/base.js' %}?ver=1.02"></script>
+    <script src="{% static 'js/base.js' %}?ver=1.09"></script>
     {% block js_static %}{% endblock %}
 
     <!--mycss-->
     {% block style_css %}{% endblock %}
-    <link href="{%static "css/base.css" %}?ver=1.09" rel="stylesheet">
+    <link href="{%static "css/base.css" %}?ver=1.22" rel="stylesheet">
 
 
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
 <body>
@@ -93,13 +97,17 @@
       <!--search-->
       <div class="search_bar">
         <div class="wrap_input">
-          <input type="text" placeholder="태그를 입력해주세요">
+          <div class="autocomplete">
+            <input id="myInput" type="text" placeholder="태그를 입력해주세요">
+          </div>
+          <button class="tag_append" onclick="tagaddfunction()">추가
+          </button>
         </div>
         <button class="search_close_btn">취소</button>
       </div>
       <div class="recommend_list">
-        <div class="tag_box">
-
+        <div id="tag_box">
+            test
         </div>
         <strong>태그 사용방법</strong>
         <ul>
@@ -129,6 +137,7 @@
    <div id='section1'>
       {% block content %}{% endblock %}
    </div>
+
 
 
    <!--footer-->

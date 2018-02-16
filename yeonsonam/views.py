@@ -14,6 +14,7 @@ from .models import *
 from .forms import *
 import re
 
+
 def drama_list(request, tag_pk=None):
     if tag_pk is not None:
         drama_list = Drama2.objects.filter(tag__pk=tag_pk)

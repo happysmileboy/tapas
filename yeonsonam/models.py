@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 
 class Tag(models.Model):
     name = models.CharField(max_length=10)
@@ -51,3 +52,5 @@ class Comment(models.Model):
         return reverse('yeonsonam:drama_detail', kwargs={
             'pk': self.pk,
         })
+
+
