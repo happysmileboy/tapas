@@ -1,0 +1,21 @@
+{% extends "base2.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block js_static %}
+<script src="{% static 'js/yeonsonam.js' %}?ver=1.05"></script>
+{%endblock%}
+{% block style_css %}
+<link href="{%static "css/yeonsonam.css" %}?ver=1.05" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+
+
+{% endblock %}

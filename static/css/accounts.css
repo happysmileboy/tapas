@@ -1,0 +1,19 @@
+.login_box {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.btn.btn-block {
+   width: 400px;
+}
+
+.social_login{
+   width: 100% ;
+}
+
+.social_login_btn{
+}
+
+.btn.btn-block {
+    width: 100%;
+}
