@@ -73,6 +73,15 @@ def drama_like(request, pk):
 
 
 
+def place_detail(request, pk):
+    place = get_object_or_404(PlaceList, pk=pk)
+    ctx = {
+        'place': place,
+    }
+    return render(request, 'yeonsonam/place_detail.html', ctx)
+
+
+
 
 
 
