@@ -9,6 +9,12 @@ class Tag(models.Model):
         return self.name
 
 
+class Tag2(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
 
 class Drama2(models.Model):
     field1 = models.TextField(blank=True, null=True)
@@ -26,6 +32,7 @@ class Drama2(models.Model):
     field13 = models.TextField(blank=True, null=True)
     field14 = models.TextField(blank=True, null=True)
     field15 = models.TextField(blank=True, null=True)
+    tag2 = models.ManyToManyField(Tag2)
 
     class Meta:
         managed = False

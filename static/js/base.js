@@ -99,6 +99,7 @@ $(document).ready(function(){
         }
       }
   });
+
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -125,6 +126,7 @@ $(document).ready(function(){
       }
     }
   }
+
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
       closeAllLists(e.target);
@@ -140,10 +142,21 @@ autocomplete(document.getElementById("myInput"), tags);
 
 
 function tagaddfunction(){
-  var a, tagadd;
+  var tag_box, a, tagadd;
+    tag_box = document.getElementById("tag_box")
     tagadd = document.getElementById("myInput").value
     a = document.createElement("DIV")
-
-    document.getElementById("tag_box").innerHTML = tagadd
+    tag_box.appendChild(a)
+    a.setAttribute("onclick", "tagremovefunction(\""+tagadd+"\")");
+    a.setAttribute("class", "tag_value");
+    a.setAttribute("id", tagadd);
+    a.innerHTML = tagadd
     document.getElementById("myInput").value = ""
+}
+
+function tagremovefunction(id){
+  var parent = document.getElementById("tag_box")
+  var child = document.getElementById(id)
+  parent.removeChild(child)
+
 }

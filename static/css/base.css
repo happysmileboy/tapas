@@ -186,6 +186,16 @@ header .nav_mobile{
 #tag_box{
   width:100%;
   height: 50px;
+  background-color: #f73c6a;
+  text-align: left;
+}
+.tag_value{
+  display:inline-block;
+  background-color: #f6f6f6;
+  padding:8px;
+  margin:5px;
+  border-radius: 15px;
+  color:rgb(126, 126, 126);
 }
 .recommend_list{
   display: none;

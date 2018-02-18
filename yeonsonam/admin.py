@@ -6,3 +6,4 @@ from .models import *
 
 
 admin.site.register(Drama2)
+admin.site.register(Tag2)

@@ -33,7 +33,7 @@ Colored by Color Scripter
    {% for drama_list in drama_list %}
    <div class="drama_card" >
       <a href="{% url 'yeonsonam:drama_detail' drama_list.pk %}" onclick="myfunction('{% url 'yeonsonam:drama_detail' drama_list.pk %}')" class="drama_detail_view">
-         <img src="{{ drama_list.poster }}">
+         <img src="{{ drama_list.field7 }}">
       </a>
    </div>
    {% endfor%}

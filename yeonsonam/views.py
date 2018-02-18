@@ -15,6 +15,15 @@ from .forms import *
 import re
 
 
+def drama_search(request, tag2_name):
+    if tag2_nameame is not None:
+        drama_list = Drama2.objects.filter(tag2__name=tag2_name)
+    ctx ={
+        'drama_list': drama_list,
+    }
+    return render(request, 'base2.html', ctx)
+
+
 def drama_list(request, tag_pk=None):
     if tag_pk is not None:
         drama_list = Drama2.objects.filter(tag__pk=tag_pk)
@@ -33,6 +42,7 @@ def drama_list(request, tag_pk=None):
         'tag_selected': tag,
     }
     return render(request, 'yeonsonam/drama_list.html', ctx)
+
 
 def drama_list_test(request, tag_pk=None):
     if tag_pk is not None:
@@ -59,7 +69,7 @@ def drama_list_test(request, tag_pk=None):
 def drama_detail(request, pk):
     drama = get_object_or_404(Drama2, pk=pk)
     comment_form = CommentForm(request.POST or None)
-    url = drama.styurl
+    url = drama.field11
     urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+jpg', url)
 
     ctx = {

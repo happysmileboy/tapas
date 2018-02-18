@@ -17,7 +17,7 @@
 
     <!--mycss-->
     {% block style_css %}{% endblock %}
-    <link href="{%static "css/base.css" %}?ver=1.22" rel="stylesheet">
+    <link href="{%static "css/base.css" %}?ver=1.23" rel="stylesheet">
 
 
     <!--Import Google Icon Font-->
@@ -97,9 +97,12 @@
       <!--search-->
       <div class="search_bar">
         <div class="wrap_input">
+
+          <!--autocomplete-->
           <div class="autocomplete">
             <input id="myInput" type="text" placeholder="태그를 입력해주세요">
           </div>
+
           <button class="tag_append" onclick="tagaddfunction()">추가
           </button>
         </div>
@@ -107,8 +110,9 @@
       </div>
       <div class="recommend_list">
         <div id="tag_box">
-            test
         </div>
+
+
         <strong>태그 사용방법</strong>
         <ul>
           <li>
