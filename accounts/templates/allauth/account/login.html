@@ -6,19 +6,23 @@
 {% load staticfiles %}
 
 {% block style_css %}
-  <link href="{% static "css/accounts.css" %}?ver=1.13" rel="stylesheet">
+  <link href="{% static "css/accounts.css" %}?ver=1.14" rel="stylesheet">
 {% endblock %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
 <div class="login_box">
-<h1 style= "text-align: center;">{% trans "타파스" %}</h1>
+<h1 style= "text-align: center;">로그인</h1>
 
   <!--로그인-->
+<div class="">
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <input type="email" name="login" placeholder="이메일" autofocus="autofocus" required="" id="id_email">
+    <input type="password" name="password" placeholder="비밀번호" required="" id="id_password">
+
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}

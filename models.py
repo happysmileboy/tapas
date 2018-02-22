@@ -8,26 +8,29 @@
 from django.db import models
 
 
-class Drama2LikerSet(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    drama2_id = models.IntegerField()
-    user = models.ForeignKey('AccountsUser', models.DO_NOTHING)
+class Drama2(models.Model):
+    place = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_kind = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_id = models.TextField(blank=True, null=True)  # This field type is a guess.
+    openrun = models.TextField(blank=True, null=True)  # This field type is a guess.
+    poster = models.TextField(blank=True, null=True)  # This field type is a guess.
+    title = models.TextField(blank=True, null=True)  # This field type is a guess.
+    end_date = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_state = models.TextField(blank=True, null=True)  # This field type is a guess.
+    detail_url = models.TextField(blank=True, null=True)  # This field type is a guess.
+    age = models.TextField(blank=True, null=True)  # This field type is a guess.
+    casts = models.TextField(blank=True, null=True)  # This field type is a guess.
+    crews = models.TextField(blank=True, null=True)  # This field type is a guess.
+    theater_company = models.TextField(blank=True, null=True)  # This field type is a guess.
+    id = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'Drama2_liker_set'
-        unique_together = (('drama2_id', 'user'),)
-
-
-class Drama2Tag(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    drama2_id = models.IntegerField()
-    tag = models.ForeignKey('YeonsonamTag', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'Drama2_tag'
-        unique_together = (('drama2_id', 'tag'),)
+        db_table = 'Drama2'
+# Unable to inspect table 'Drama2_liker_set'
+# The error was: list index out of range
+# Unable to inspect table 'Drama2_tag2'
+# The error was: list index out of range
 
 
 class AccountEmailaddress(models.Model):
@@ -208,29 +211,6 @@ class DjangoSite(models.Model):
         db_table = 'django_site'
 
 
-class Drama3(models.Model):
-    field1 = models.TextField(blank=True, null=True)
-    field2 = models.TextField(blank=True, null=True)
-    field3 = models.TextField(blank=True, null=True)
-    field4 = models.TextField(blank=True, null=True)
-    field5 = models.TextField(blank=True, null=True)
-    field6 = models.TextField(blank=True, null=True)
-    field7 = models.TextField(blank=True, null=True)
-    field8 = models.TextField(blank=True, null=True)
-    field9 = models.TextField(blank=True, null=True)
-    field10 = models.TextField(blank=True, null=True)
-    field11 = models.TextField(blank=True, null=True)
-    field12 = models.TextField(blank=True, null=True)
-    field13 = models.TextField(blank=True, null=True)
-    field14 = models.TextField(blank=True, null=True)
-    field15 = models.TextField(blank=True, null=True)
-    id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'drama3'
-
-
 class EtcNotice(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     title = models.CharField(max_length=200)
@@ -316,19 +296,8 @@ class SocialaccountSocialtoken(models.Model):
         managed = False
         db_table = 'socialaccount_socialtoken'
         unique_together = (('app', 'account'),)
-
-
-class YeonsonamComment(models.Model):
-    id = models.IntegerField(primary_key=True)  # AutoField?
-    content = models.CharField(max_length=100)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-    author = models.ForeignKey(AccountsUser, models.DO_NOTHING)
-    drama_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'yeonsonam_comment'
+# Unable to inspect table 'yeonsonam_comment'
+# The error was: list index out of range
 
 
 class YeonsonamTag(models.Model):
@@ -338,3 +307,12 @@ class YeonsonamTag(models.Model):
     class Meta:
         managed = False
         db_table = 'yeonsonam_tag'
+
+
+class YeonsonamTag2(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    name = models.CharField(max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'yeonsonam_tag2'

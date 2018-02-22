@@ -10,21 +10,12 @@
 <script src="{% static 'js/yeonsonam.js' %}?ver=1.05"></script>
 {%endblock%}
 {% block style_css %}
-<link href="{%static "css/yeonsonam.css" %}?ver=1.05" rel="stylesheet">
+<link href="{%static "css/yeonsonam.css" %}?ver=1.06" rel="stylesheet">
 {% endblock %}
 
 
 {% block content %}
-<div class="form-group">
-    <label>Tags</label>
-    <div class="controls">
-        {{ form.tags }}
-    </div>
-</div>
 
-<script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
-{{ form.media }}
-Colored by Color Scripter
 
 <div class="tag_list_box">
 </div>

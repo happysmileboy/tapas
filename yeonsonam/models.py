@@ -17,26 +17,28 @@ class Tag2(models.Model):
 
 
 class Drama2(models.Model):
-    field1 = models.TextField(blank=True, null=True)
-    field2 = models.TextField(blank=True, null=True)
-    field3 = models.TextField(blank=True, null=True)
-    field4 = models.TextField(blank=True, null=True)
-    field5 = models.TextField(blank=True, null=True)
-    field6 = models.TextField(blank=True, null=True)
-    field7 = models.TextField(blank=True, null=True)
-    field8 = models.TextField(blank=True, null=True)
-    field9 = models.TextField(blank=True, null=True)
-    field10 = models.TextField(blank=True, null=True)
-    field11 = models.TextField(blank=True, null=True)
-    field12 = models.TextField(blank=True, null=True)
-    field13 = models.TextField(blank=True, null=True)
-    field14 = models.TextField(blank=True, null=True)
-    field15 = models.TextField(blank=True, null=True)
-    tag2 = models.ManyToManyField(Tag2)
+    place = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_kind = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_id = models.TextField(blank=True, null=True)  # This field type is a guess.
+    openrun = models.TextField(blank=True, null=True)  # This field type is a guess.
+    poster = models.TextField(blank=True, null=True)  # This field type is a guess.
+    title = models.TextField(blank=True, null=True)  # This field type is a guess.
+    end_date = models.TextField(blank=True, null=True)  # This field type is a guess.
+    perf_state = models.TextField(blank=True, null=True)  # This field type is a guess.
+    detail_url = models.TextField(blank=True, null=True)  # This field type is a guess.
+    age = models.TextField(blank=True, null=True)  # This field type is a guess.
+    casts = models.TextField(blank=True, null=True)  # This field type is a guess.
+    crews = models.TextField(blank=True, null=True)  # This field type is a guess.
+    theater_company = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'drama2'
+        db_table = 'Drama2'
+# Unable to inspect table 'Drama2_liker_set'
+# The error was: list index out of range
+# Unable to inspect table 'Drama2_tag2'
+# The error was: list index out of range
+
 
 
 
