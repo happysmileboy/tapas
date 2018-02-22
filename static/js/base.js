@@ -3,7 +3,7 @@
   $(document).ready(function(){
       $("#nav_mobile_menu").click(function(){
         $(".nav_mobile_menu_content").addClass("nav_mobile_menu_content_expend");
-        $(".menu_wrap").addClass("dropdown_content_display");
+        $(".menu_wrap").addClass("menu_expend");
         $(".menu").animate({left: '0',right:'56px'});
       });
   });

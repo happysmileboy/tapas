@@ -81,6 +81,9 @@ header .nav_mobile{
     transition: 0.8s;
     border: 1px solid rgba(0,0,0,0);
 }
+.dropdown_content_display{
+  display:block;
+}
 .menu{
   position: fixed;
   top: 0;
@@ -93,6 +96,33 @@ header .nav_mobile{
 .menu_expend{
   right:56px;
   left:0;
+}
+.menu .top{
+  width:100%;
+  height:190px;
+  background:linear-gradient(to bottom, #ff0055 0%,#e62243 100%);
+}
+.menu .top .member .mem{
+    display: block;
+    height: 134px;
+    padding-top: 35px;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+}
+.menu .top .member .mem span{
+  display: inline-block;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 100%;
+  background-size: cover !important;
+}
+.menu .top .member .mem .pro_nick{
+  font-size:16px;
+  display:block;
+  margin:0;
 }
 
 #logo{

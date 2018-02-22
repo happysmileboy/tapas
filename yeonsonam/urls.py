@@ -13,4 +13,5 @@ urlpatterns = [
     path('test', views.drama_list_test, name='drama_list_tset'),
     path('<int:pk>/', views.drama_detail, name='drama_detail'),
     path('<int:pk>/like/', views.drama_like, name='drama_like'),
+    path('place/<int:pk>/', views.place_detail, name='place_detail'),
 ]
