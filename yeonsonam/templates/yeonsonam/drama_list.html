@@ -1,0 +1,53 @@
+{% extends "base2.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block js_static %}
+<script src="{% static 'js/yeonsonam.js' %}?ver=1.05"></script>
+{%endblock%}
+{% block style_css %}
+<link href="{%static "css/yeonsonam.css" %}?ver=1.06" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="tag_list_box">
+</div>
+검색하세요
+<form action="" method="get">
+  어떤 장르를 원하신가요?(코믹, 멜로, 로멘스, 드라마)<input type="text" name="genre" value="{{ genre }}">
+  누구와 함께 보고싶으신가요? (친구, 연인, 가족) <input type="text" name="who" value="{{ who }}">
+  <input type="submit" value="검색">
+</form>
+
+
+<div class="list_box">
+   {% for drama_list in drama_list %}
+   <div class="drama_card" >
+      <a href="{% url 'yeonsonam:drama_detail' drama_list.pk %}" onclick="myfunction('{% url 'yeonsonam:drama_detail' drama_list.pk %}')" class="drama_detail_view">
+         <img src="{{ drama_list.field5 }}">
+      </a>
+   </div>
+   {% endfor%}
+</div>
+
+<div class="gsc-results-wrapper-overlay">
+   <div class="gsc-results-close-btn" tabindex="0">
+   </div>
+   <div class="detail">
+      TETS입니다
+   </div>
+</div>
+<div class="gsc-modal-background-image">
+</div>
+
+
+
+{% endblock %}
