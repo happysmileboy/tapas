@@ -20,10 +20,29 @@
 
 <div class="tag_list_box">
 </div>
-검색하세요
+
 <form action="" method="get">
-  어떤 장르를 원하신가요?(코믹, 멜로, 로멘스, 드라마)<input type="text" name="genre" value="{{ genre }}">
-  누구와 함께 보고싶으신가요? (친구, 연인, 가족) <input type="text" name="who" value="{{ who }}">
+
+장르</br>
+   <input type="checkbox" name="genre" value="멜로">멜로
+   <input type="checkbox" name="genre" value="로멘스">로맨스
+   <input type="checkbox" name="genre" value="드라마">드라마</br>
+
+
+<p>누구와?</p>
+   <input type="checkbox" name="who" value="가족">가족
+   <input type="checkbox" name="who" value="친구">친구
+   <input type="checkbox" name="who" value="연인">연인<br>
+
+
+<p></p>
+   <input type="checkbox" name="search_or" value="False">or 검색<br>
+   <input type="checkbox" name="search_or" value="True">and 검색<br>
+
+
+
+
+
   <input type="submit" value="검색">
 </form>
 
@@ -32,7 +51,7 @@
    {% for drama_list in drama_list %}
    <div class="drama_card" >
       <a href="{% url 'yeonsonam:drama_detail' drama_list.pk %}" onclick="myfunction('{% url 'yeonsonam:drama_detail' drama_list.pk %}')" class="drama_detail_view">
-         <img src="{{ drama_list.field5 }}">
+         <img src="{{ drama_list.field5}}">
       </a>
    </div>
    {% endfor%}

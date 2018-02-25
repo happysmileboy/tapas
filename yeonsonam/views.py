@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.db.models import Q
 # Create your views here.
 from django.shortcuts import (
     render,
@@ -20,10 +20,16 @@ def drama_list(request):
     drama_list = Drama222.objects.all()
     genre = request.GET.get('genre', '')
     who = request.GET.get('who', '')
-    if genre:
-        drama_list = drama_list.filter(field18__icontains=genre)
-    if who:
-        drama_list = drama_list.filter(field19__icontains=who)
+    search_or = request.GET.get('search_or', '')
+
+    if search_or == 'True' :
+        drama_list = drama_list.filter(Q(field18__icontains=genre) & Q(field19__icontains=who))
+
+    if search_or == 'False':
+        drama_list = drama_list.filter(Q(field18__icontains=genre) | Q(field19__icontains=who))
+
+    print(search_or)
+
 
     ctx = {
         'drama_list': drama_list,
